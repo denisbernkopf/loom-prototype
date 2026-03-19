@@ -19,19 +19,20 @@
     --font-display: 'Playfair Display', serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
+  html, body {
     font-family: var(--font-body);
     background: #e8e4de;
     display: flex; justify-content: center; align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; min-height: 100dvh;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   .phone-frame {
     width: 393px; height: 852px;
     background: var(--bg);
-    border-radius: 48px; overflow: hidden; position: relative;
+    border-radius: 48px; overflow: hidden; overflow-x: hidden; position: relative;
     box-shadow:
       0 0 0 1px rgba(0,0,0,0.06),
       0 25px 80px rgba(0,0,0,0.12),
@@ -322,7 +323,40 @@
   }
 
   @media (max-width: 420px) {
-    .phone-frame { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; }
+    .phone-frame {
+      width: 100vw; height: 100vh; height: 100dvh;
+      border-radius: 0; box-shadow: none;
+    }
+    body { min-height: 100vh; min-height: 100dvh; }
+    .hero-section { height: 38vh; }
+    .hero-content { padding: 48px 20px 0; }
+    .hero-brand { font-size: 36px; }
+    .hero-temp { font-size: 72px; }
+    .hero-temp span { font-size: 42px; }
+    .hero-location { margin-top: 10px; font-size: 16px; }
+    .outfit-section { padding: 0 16px; }
+    .outfit-float-card { min-height: 240px; padding: 16px 18px 18px; }
+    .hero-character { height: 420px; right: -45px; bottom: -20px; }
+    .forecast-section { padding: 12px 16px 0; }
+    .forecast-day { padding: 12px 6px; }
+    .bottom-nav { padding: 10px 0 24px; }
+    .status-bar { padding: 12px 24px 0; }
+    .scroll-area { padding-bottom: 66px; }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 380px) {
+    .hero-section { height: 35vh; }
+    .hero-temp { font-size: 64px; }
+    .hero-character { height: 360px; right: -40px; }
+    .outfit-float-card { min-height: 210px; }
+  }
+
+  /* Tall phones (iPhone Pro Max etc) */
+  @media (max-width: 420px) and (min-height: 800px) {
+    .hero-section { height: 40vh; }
+    .hero-character { height: 460px; }
+    .outfit-float-card { min-height: 260px; }
   }
 </style>
 </head>
